@@ -1,0 +1,40 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+header {
+	font-size: 25pt;
+	height: 100px;
+}
+
+.navbar {
+	display: inline-block;
+	vertical-align: top;
+	height: 100%;
+}
+
+.navbar div {
+	display: inline-block;
+	padding: 0px 20px;
+	vertical-align: middle;
+	text-align: center;
+	height: 100%;
+	line-height: 100px;
+}
+
+.navbar div:hover {
+	background-color: gray;
+}
+
+.left-panel {
+	display: inline;
+	width: 50%;
+	border: 1px solid gray;
+}
+
+.right-panel {
+	display: inline;
+	width: 50%;
+	border: 1px solid gray;
+}
