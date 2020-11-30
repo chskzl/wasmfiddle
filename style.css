@@ -1,6 +1,6 @@
 body {
 	background-color: black;
-	color: white;
+	color: white;font-family: 'IBM Plex Mono', monospace;
 }
 
 header {
@@ -35,12 +35,11 @@ header {
 	display: inline-block;
 	width: 49%;
 	height: 100%;
-	border: 1px solid gray;
+	border-right: 1px solid gray;
 }
 
 .right-panel {
 	display: inline-block;
 	width: 49%;
 	height: 100%;
-	border: 1px solid gray;
 }
