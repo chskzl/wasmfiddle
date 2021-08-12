@@ -1,0 +1,205 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>WASM Fiddle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="WASMFiddle_logo_v1_sm.png">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="vs/editor/editor.main.css">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <a id="logo" title="WASMFiddle" href="/"><img src="WASMFiddle_logo_v1_sm.png" height=100%></a>
+            <nav class="navbar">
+                <a href="#" id="buttonRun">Run</a>
+                <a href="#">Save</a>
+                <a href="#">Share</a>
+                <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm">Learn WASM</a>
+            </nav>
+        </header>
+        <main>
+            <div id="content">
+                <div class="panel left-panel">
+                    <div class="panel-label">
+                        <span>WebAssembly
+                            <span class="panel-menu">
+                                Language:
+                                <button id="langC">C</button>
+                                <button id="langCpp">C++</button>
+                                <button id="langRust">Rust</button>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="monacoEditor" id="WebAssemblyEditor"></div>
+                </div>
+                <div class="panel right-panel">
+                    <div class="panel-label">
+                        <span>Output</span>
+                    </div>
+                    <div id="Output"></div>
+                </div>
+                <div class="panel left-panel">
+                    <div class="panel-label">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="monacoEditor" id="JavaScriptEditor"></div>
+                </div>
+                <div class="panel right-panel">
+                    <div class="panel-label">
+                        <span>HTML</span>
+                    </div>
+                    <div class="monacoEditor" id="HTMLEditor"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script>
+    var require = { paths: { vs: 'vs' } };
+</script>
+
+<script src="vs/loader.js"></script>
+<script src="vs/editor/editor.main.nls.js"></script>
+<script src="vs/editor/editor.main.js"></script>
+
+<script>
+    var webassemblyEditor = monaco.editor.create(document.getElementById('WebAssemblyEditor'), {
+        minimap: {
+            enabled: false
+        },
+        wordWrap: 'on',
+        lineNumbers: 'off',
+        folding: false,
+        lineDecorationsWidth: 5,
+        theme: 'vs-dark',
+        automaticLayout: true,
+        value: [
+            '// Code adapted from https://stackoverflow.com/a/50832655',
+            '',
+            '#include <stdio.h>',
+            '#include <emscripten.h>',
+            '',
+            'void Copy_ToCanvas(uint32_t* ptr, int w, int h) {',
+            '  EM_ASM_({',
+            '      let data = Module.HEAPU8.slice($0, $0 + $1 * $2 * 4);',
+            '      let context = Module[\'canvas\'].getContext(\'2d\');',
+            '      let imageData = context.getImageData(0, 0, $1, $2);',
+            '      imageData.data.set(data);',
+            '      context.putImageData(imageData, 0, 0);',
+            '    }, ptr, w, h);',
+            '}',
+            '',
+            'int main() {',
+            '    int screen[320*320],idx=0;',
+            '    for (int x=0; x<320*320; x++)',
+            '        screen[idx++] = 0xff000000;',
+            '    for (int x=0; x<320; x++)',
+            '        for (int y=0; y<320; y++)',
+            '            screen[320*(x|y) + (x&y)]= 0xffffffff;',
+            '    Copy_ToCanvas(screen, 320, 320);',
+            '    printf("hello, world!\\n");',
+            '    return 0;',
+            '}'
+        ].join('\n'),
+        language: 'c'
+    });
+
+    var javascriptEditor = monaco.editor.create(document.getElementById('JavaScriptEditor'), {
+        minimap: {
+            enabled: false
+        },
+        wordWrap: 'on',
+        lineNumbers: 'off',
+        folding: false,
+        lineDecorationsWidth: 5,
+        theme: 'vs-dark',
+        automaticLayout: true,
+        value: [
+            'var editor = monaco.editor.create(document.getElementById(\'test\'), {',
+            '    minimap: {',
+            '        enabled: false',
+            '    },',
+            '    theme: \'vs-dark\',',
+            '    automaticLayout: true,',
+            '    value: [',
+            '    \'var editor = monaco.editor.create(document.getElementById(\\\'JavaScriptEditor\\\'), {\',',
+            '    \'    minimap: {\',',
+            '    \'        enabled: false\',',
+            '    \'    },\',',
+            '    \'    theme: \\\'vs-dark\\\',\',',
+            '    \'    automaticLayout: true,\'',
+            '    ].join(\'\\n\'),',
+            '    language: \'javascript\'',
+            '    });'
+        ].join('\n'),
+        language: 'javascript'
+    });
+
+    var htmlEditor = monaco.editor.create(document.getElementById('HTMLEditor'), {
+        minimap: {
+            enabled: false
+        },
+        wordWrap: 'on',
+        lineNumbers: 'off',
+        folding: false,
+        lineDecorationsWidth: 5,
+        theme: 'vs-dark',
+        automaticLayout: true,
+        value: [
+            '<div id="test">',
+            '<p class="testing" id="main">Test content.</p>',
+            '</div>'
+        ].join('\n'),
+        language: 'html'
+    });
+</script>
+<script>
+    window.onload = function() {
+
+		var inputLang = "c";
+
+		document.getElementById("langC").onclick = function() {inputlang = "c"};
+		document.getElementById("langCpp").onclick = function() {inputlang = "cpp"};
+		document.getElementById("langRust").onclick = function() {inputLang = "rust"};
+
+        var buttonRun = document.getElementById("buttonRun");
+        buttonRun.onclick = function() {
+            //get source code from editor and encode it with JSON.stringify
+            let values = JSON.stringify({
+                webassemblyEditorValue: webassemblyEditor.getValue(),
+                javascriptEditorValue: javascriptEditor.getValue(),
+                htmlEditorValue: htmlEditor.getValue()
+            });
+        
+            console.log(values);
+
+            fetch("/compilerC/receiver", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: values,
+            })
+            .then(response => response.json())
+            .then(data => {
+                setTimeout(function(){
+                    var iframeOutput = document.createElement('iframe');
+                    iframeOutput.setAttribute('id', 'iframeOutput');
+                    var divOutput = document.getElementById('Output');
+                    divOutput.innerHTML = "";
+                    divOutput.appendChild(iframeOutput);
+                    iframeOutput.setAttribute('src', data.link);
+                }, 5000);
+                var divOutput = document.getElementById('Output');
+                divOutput.innerHTML = 'Please wait 5 seconds for the code to compile<br><div id="spinner">';
+            })
+            // here we can just redirect to the link of the compiled module for now...
+            return false;
+        }
+    }
+</script>
+</html>

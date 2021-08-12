@@ -1,0 +1,37 @@
+doctype html
+html
+    head
+        title
+            block title
+        link(rel='icon', type='image/png', href='/media/logo.png')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto&display=swap')
+        link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/style.css?v=2')
+    body
+    div(class='container')
+        a(class="imgLink" href="/"): img(id='logo' src='/media/logo.png')
+        ul(class='nav')
+            li
+                a(href="/project") New Project
+            //- li
+            //-     a(href="/") Language
+            li
+                span(class="dropdown") Language...
+                ul
+                    li
+                        a(href="/") C
+                    li
+                        a(href="/") C++
+                    li
+                        a(href="/") Rust
+            li
+                if sessionUserID == -1
+                    a(href="/createAccount") Create account
+                else
+                    a(href="/myAccount") My Account
+            li
+                if sessionUserID == -1
+                    a(href="/signIn") Sign In
+                else
+                    a(href="/signIn/signOut") Sign Out
+        block content

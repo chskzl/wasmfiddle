@@ -1,0 +1,36 @@
+extends master.pug
+block title
+    | WASM Fiddle
+block content
+    h1 Welcome to WASM Fiddle
+    if sessionName
+        h4(style='color:red') Logged in as: #{sessionName} (#{sessionEmail})
+    h4 Here are some of the features this website has to offer:
+    ul(class='largeList')
+        li Layout for new projects
+        li Log in and see your projects (login works)
+        li Create and compile Web Assembly Modules (in progress)
+    h4 Supporting technologies
+    ul(class='largeList')
+        li Ubuntu 20.04 VM on Google Cloud as Operating System
+        li MySQL 8.0.19 as database for all data and session storage
+        li Node 12.18.4 LTS as main app engine
+        li pm2 4.4.1 as node process manager
+        li Nginx as proxy
+        ul.listLevel2
+            li http2 for performance
+            li Let's Encrypt for TLS encryption
+            li Serves static content directly from file system
+    h4 Node packages
+    ul(class='largeList')
+        li browser-sync 2.26.7
+        li connect-browser-sync 2.1.0
+        li express 4.17.1
+        li express-mysql-session 2.1.3
+        li express-recaptcha 5.0.1
+        li express-session 1.17.0
+        li moment 2.24.0
+        li mysql 2.18.1
+        li pug 2.0.4
+        li require-dir 1.2.0
+        li socket.io 2.3.0

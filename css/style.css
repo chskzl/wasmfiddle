@@ -1,0 +1,398 @@
+body {
+    background: #f2fdfd;
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    border: 5px solid #02aec7;
+    border-top: none;
+    padding: 15px;
+    border-radius: 0 0 16px 16px;
+    background: #fff;
+    padding-top: 0px;
+}
+
+a:not(.imgLink),
+button {
+    color: #000000;
+    border: 1px solid #bbb;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 16px;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    background: inherit;
+}
+
+
+/* content */
+
+.btn {
+    color: #fff;
+    background: #02aec7;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 16px;
+    display: inline-block;
+    border: none;
+}
+
+.btn {
+    padding: 8px 18px;
+}
+
+.btn:hover {
+    background: #007183;
+    color: #fff;
+    transition: all 0.6s ease 0s;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.verticalList a {
+    margin: 5px 0;
+}
+
+.verticalListSectioned li {
+    margin-bottom: 5px;
+}
+
+.verticalListSectioned li a:first-child {
+    border-radius: 16px 0 0 16px;
+    margin-right: 0;
+}
+
+.verticalListSectioned li button:last-child,
+.verticalListSectioned li button:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+.largeList li {
+    list-style-type: disc;
+    font-size: 18px;
+    margin-left: 30px;
+}
+
+ul.listLevel2 {
+    margin-left: 30px;
+}
+
+.btnDelete {
+    background: #ff3a3a;
+    margin: -2px 0 0 0;
+    padding: 5px 10px;
+    border: 1px solid #ff3a3a;
+}
+
+.btnDelete:hover {
+    background: rgb(207, 24, 24);
+    border: 1px solid #ff3a3a;
+}
+
+.ratingView {
+    color: #000000;
+    border: 1px solid #bbb;
+    padding: 5px 8px 5px 12px;
+    margin-right: 0;
+    border-radius: 16px 0 0 16px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a.ratingView {
+    border-radius: 0;
+    font-weight: normal;
+    margin-right: 0;
+}
+
+.red {
+    color: #F00;
+}
+
+
+/* forms */
+
+form.narrow {
+    width: 400px;
+    padding-top: 15px;
+}
+
+form.medium {
+    width: 600px;
+    padding-top: 15px;
+}
+
+.form-control {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    border-color: #777;
+    height: 38px;
+    padding: 6px 12px;
+    color: #000
+}
+
+.recaptcha {
+    margin: 0 0 15px 1px;
+}
+
+a:hover,
+button:hover {
+    background: #02aec7;
+    text-decoration: none;
+    color: #000;
+}
+
+button {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control:disabled {
+    background: #02aec7;
+    color: #fff;
+}
+
+.form-control:focus {
+    transition: 0.3s ease all;
+    color: #000;
+}
+
+div.relative {
+    position: relative;
+}
+
+.placeholderLabel {
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 8px;
+    transition: 0.3s ease all;
+    color: #777;
+}
+
+input:focus~.placeholderLabel,
+input:valid~.placeholderLabel,
+input.filled~.placeholderLabel {
+    left: 11px;
+    top: -10px;
+    font-size: 12px;
+    opacity: 1;
+    background: #fff;
+    padding: 0 2px;
+    color: #007bff;
+}
+
+input:not(:focus):valid~.placeholderLabel,
+input.filled~.placeholderLabel {
+    color: #000;
+}
+
+
+/* Prevent autofill colors */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+
+/* rating picker */
+
+fieldset {
+    display: inline-block;
+}
+
+.ratingPicker {
+    margin-top: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.ratingPicker input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: -9999px;
+}
+
+.ratingPicker input+label {
+    margin-right: 2px;
+    padding-top: 5px;
+    border: solid 1px #ddd;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+}
+
+.ratingPicker input:hover+label {
+    border-color: #02aec7;
+    background-color: #02aec7;
+    box-sizing: border-box;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.ratingPicker input:checked+label {
+    background-color: #02aec7;
+    border-color: #02aec7;
+    color: #fff;
+    transition: all 0.3s ease 0s;
+}
+
+
+/* nav */
+
+#logo {
+    margin-top: 5px;
+    height: 38px;
+}
+
+.nav .dropdown {
+    color: #fff;
+    background: #02aec7;
+    display: inline-block;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.nav .dropdown:hover {
+    transition: all 0.6s ease 0s;
+    background: #007183;
+}
+
+.nav a {
+    color: #fff;
+    background: none;
+    padding: 5px 10px;
+    display: inline-block;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    transition: none;
+}
+
+.nav {
+    margin: 0 5px 20px 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.nav li {
+    display: inline-block;
+    color: #fff;
+    background: #02aec7;
+    border-right: 1px solid #fff;
+}
+
+.nav>li:first-of-type {
+    border-radius: 0 0 0 16px;
+    padding-left: 5px;
+}
+
+.nav>li:last-child {
+    border-radius: 0 0 16px 0;
+    padding-right: 5px;
+}
+
+.nav li:hover {
+    background: #007183;
+    color: #fff;
+    transition: all 0.6s ease 0s;
+    text-decoration: none;
+}
+
+.nav ul {
+    display: none;
+    z-index: 999;
+    min-width: 100px;
+}
+
+.nav li:hover>ul {
+    display: block;
+}
+
+.nav li ul {
+    position: absolute;
+    margin-left: -1px;
+    border-radius: 0 0 16px 16px;
+    border: 1px solid #fff;
+    background: #fff;
+    border-width: 0 1px 1px 1px;
+    overflow: hidden;
+}
+
+.nav li ul li {
+    display: block;
+    border: none;
+    border-top: 1px solid #fff;
+    border-radius: 0;
+}
+
+
+/* Fancy stuff */
+
+.slideUnderline {
+    width: fit-content;
+    margin: auto;
+    color: red;
+    font-size: 2em;
+    line-height: 1.2;
+    padding-bottom: .1em;
+    background: linear-gradient(to right, red 0, red 100%);
+    background-position: 0 1.2em;
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    animation: slideUnderline .2s ease-in 1s 1 forwards;
+}
+
+@keyframes slideUnderline {
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
+.shake {
+    color: red;
+    animation: shake .6s .5s forwards;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    20%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-8px, 0, 0);
+    }
+    40%,
+    60%,
+    80% {
+        transform: translate3d(8px, 0, 0);
+    }
+}

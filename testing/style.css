@@ -1,0 +1,132 @@
+body {
+	color: white;
+	font-family: Consolas, "Courier New", monospace;
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	background-color: rgb(16, 16, 16);
+	font-size: 20px;
+	height: 60px;
+}
+
+#logo {
+	padding: 0px 20px;
+	display: inline-block;
+}
+
+.navbar {
+	display: inline-block;
+	vertical-align: top;
+	height: 100%;
+}
+
+.navbar a {
+	display: inline-block;
+	padding: 0px 20px;
+	vertical-align: middle;
+	text-align: center;
+	height: 100%;
+	line-height: 65px;
+	text-decoration: none;
+	color: #fff;
+}
+
+.navbar a:hover {
+	background: #654ff0;
+	cursor: pointer;
+}
+
+#container {
+	height: calc(100% - 1px);
+	margin: auto;
+	background-color: rgb(32, 32, 32);
+}
+
+#content {
+	height: calc( 100% - 60px);
+	background-color: rgb(32, 32, 32);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+.panel {
+	width: calc(50% - 1px);
+	height: calc(50% - 1px);
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #999;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.left-panel {
+}
+
+.right-panel {
+	border-width: 1px 0 0 1px;
+}
+
+.panel-label {
+	padding: 6px;
+	height: 18px;
+	background: #1e1e1e;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #999;
+}
+
+.panel-menu {
+	float: right;
+}
+
+.panel-menu button{
+	cursor: pointer;
+}
+
+#inputbox {
+	padding-top: 15px;
+	width: 100%;
+	height: 100%;
+	line-height: 100%;
+	color: white;
+	vertical-align: top;
+	border-width:0px;
+	border:none;
+	box-shadow: none;
+}
+
+.monacoEditor {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: calc(100% - 31px);
+}
+
+#iframeOutput{
+	width: 100%;
+    height: calc(100% - 31px);
+    border: none;
+}
+
+#spinner{
+    height: 100px;
+    width: 100px;
+    margin: 0px auto;
+    animation: rotation 1.5s linear infinite;
+    border-left: 20px solid rgb(0 0 0);
+    border-right: 20px solid rgb(0 0 0);
+    border-bottom: 20px solid rgb(243 125 0);
+    border-top: 20px solid rgb(243 125 0);
+    border-radius: 100%;
+    background-color: #000000;
+}
+
+@keyframes rotation {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+  }

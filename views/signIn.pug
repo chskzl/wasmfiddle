@@ -1,0 +1,18 @@
+extends master.pug
+block title
+    | Sign In
+block content
+    h2 Sign In
+    form.narrow(method='POST' action='/signIn')
+        div.relative
+            input.form-control(type='text' name='email' autocomplete='off' required)
+            span.placeholderLabel Email
+        div.relative
+            input.form-control(type='password' name='password' autocomplete='off' required)
+            span.placeholderLabel Password
+        div.recaptcha !{recaptcha}
+        button.btn.btn-primary(type='submit') Sign In
+    if status == 1
+        h4 Login was valid
+    if status == 0
+        h4.red Error logging in

@@ -1,0 +1,61 @@
+extends master.pug
+block title
+    | Project
+block content
+    style(type='text/css').
+
+        .navbar div {
+            display: inline-block;
+            padding: 0px 20px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+
+        #content {
+            height: 500px;
+        }
+
+        .left-panel {
+            display: inline-block;
+            width: 49%;
+            height: 100%;
+            border-right: 1px solid gray;
+            vertical-align: top;
+
+        }
+
+        .right-panel {
+            vertical-align: top;
+            display: inline-block;
+            width: 49%;
+            height: 100%;
+        }
+        #output{
+            color: red;
+        }
+    h1= 'Project'
+        |<header>
+        |<div class="navbar">
+        |<nav>
+        |<div><a class="nav-button" onclick='document.getElementById("output").innerHTML = "some output here!";'>Run</a></div>
+        |<div><a class="nav-button">Save</a></div>
+        |</nav>
+        |</div>
+        |</header>
+        |<main>
+        |<div id="content">
+        |<div class="panel left-panel">
+        |<div class="panel-label">
+        |<span>WebAssembly</span>
+        textarea(name="WebAssembly", cols="20", rows="8")
+        |</div>
+        |</div>
+        |<div class="panel right-panel">
+        |<div class="panel-label">
+        |<span>Output</span>
+        div(id="output")
+        |</div>
+        |</div>
+        |</div>
+        |</main>
